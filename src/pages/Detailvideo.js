@@ -8,16 +8,22 @@ const Detailvideo = () => {
   return (
     <Grid
       container
-      spacing={3}
       sx={{
         margin: "auto 0",
-        px: 6,
+        marginTop: "20px",
+        display: "flex",
+        flexDirection: {
+          xs: "column",
+          lg: "row",
+        },
+        flexWrap: "wrap",
       }}
+      columns={24}
     >
-      <Grid item xs={6} md={6} sm={6} lg={8} xl={7}>
+      <Grid item xs={24} md={6} sm={6} lg={14} xl={7}>
         <DetailVideo />
       </Grid>
-      <Grid item xs={6} md={6} sm={6} lg={4} xl={5}>
+      <Grid item xs={24} md={6} sm={6} lg={10} xl={5}>
         <ListVideo />
       </Grid>
     </Grid>

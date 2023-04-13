@@ -46,6 +46,7 @@ const Comments = () => {
         sx={{
           display: "flex",
           mt: "24px",
+          width: "100%",
         }}
       >
         <Avatar
@@ -61,7 +62,7 @@ const Comments = () => {
 
         <Box
           sx={{
-            width: "76%",
+            width: "100%",
           }}
         >
           <input
@@ -70,8 +71,8 @@ const Comments = () => {
             style={{
               border: "none",
               borderBottom: "1px solid rgba(0,0,0,0.1)",
-              padding: "8px ",
-              width: "100%",
+              width: "99%",
+              paddingBottom: "4px",
             }}
           />
         </Box>

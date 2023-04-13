@@ -92,14 +92,16 @@ const Feed = () => {
               lg: "calc(100% - 80px)",
               sm: "calc(100% - 80px)",
             },
-
+            marginTop: {
+              lg: "20px",
+            },
             marginX: "auto",
-            height: "fit-content",
-            position: "fixed",
+            height: "40px",
+            position: "sticky",
             zIndex: 1,
             backgroundColor: "#fff",
-            height: "fit-content",
             pb: 1,
+            top: "20px",
           }}
         >
           <Recommend quantity={8} />

@@ -23,7 +23,11 @@ const DetailVideo = () => {
   }, []);
 
   return (
-    <div>
+    <Box
+      sx={{
+        paddingLeft: "40px",
+      }}
+    >
       {isLoading ? (
         <Skeleton
           animation="pulse"
@@ -39,7 +43,7 @@ const DetailVideo = () => {
           <iframe
             key={selectedVideo?.id?.videoId}
             src={`https://www.youtube.com/embed/${id}`}
-            width="85%"
+            width="100%"
             height="360px"
             allowFullScreen={true}
             style={{ border: "none" }}
@@ -62,12 +66,14 @@ const DetailVideo = () => {
             maxHeight: "4,4rem",
           }}
         >
-          Anh Say Rồi - Mai Tiến Dũng live at #souloftheforest
+          Anh Say Rồi - Mai Tiến Dũng live at #souloftheforestAnh Say Rồi - Mai
+          Tiến Dũng live at #souloftheforestAnh Say Rồi - Mai Tiến Dũng live at
+          #souloftheforest
         </Typography>
       </Box>
       <Box
         sx={{
-          width: "94%",
+          width: "100%",
           display: "flex",
           alignItems: "center",
           marginTop: "12px",
@@ -164,7 +170,7 @@ const DetailVideo = () => {
           sx={{
             display: "flex",
             alignItems: "center",
-            width: "40%",
+            width: "50%",
             justifyContent: "space-between",
           }}
         >
@@ -291,13 +297,19 @@ const DetailVideo = () => {
         sx={{
           mt: "18px",
           backgroundColor: "rgba(0, 0, 0, 0.05)",
-          width: "81%",
+          width: "100%",
           display: "flex",
+          alignItems: "center",
           borderRadius: "12px",
-          padding: "12px 16px",
+          padding: "12px 0px",
         }}
       >
-        <Stack direction="column">
+        <Stack
+          sx={{
+            padding: "0 12px",
+          }}
+          direction="column"
+        >
           <Box
             sx={{
               display: "flex",
@@ -370,7 +382,7 @@ const DetailVideo = () => {
         </Stack>
       </Box>
       <Comments />
-    </div>
+    </Box>
   );
 };
 

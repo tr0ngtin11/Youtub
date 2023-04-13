@@ -17,17 +17,25 @@ const Recommend = ({ quantity }) => {
       direction="row"
       sx={{
         zIndex: "100",
+        height: "40px",
         backgroundColor: "#fff",
         overflowX: "hidden",
         maxWidth: {
+          md: "calc(100% - 32px)",
           sm: "calc(100% - 20px)",
           xs: "calc(100% - 20px)",
+          lg: "calc(100% - 80px)",
+          xl: "calc(100% - 80px)",
         },
         marginLeft: {
           lg: "16px",
         },
         margin: {
           xs: "0 auto",
+        },
+        paddingLeft: {
+          sm: "16px",
+          xl: "16px",
         },
       }}
     >

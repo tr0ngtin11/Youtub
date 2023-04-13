@@ -7,7 +7,9 @@ const Videos = ({ videos, loader }) => {
   return (
     <Grid
       columnSpacing={{
+        md: 2,
         lg: 2,
+        xl: 2,
       }}
       sx={{
         maxWidth: {
@@ -19,10 +21,12 @@ const Videos = ({ videos, loader }) => {
         },
         marginTop: {
           xs: "10px",
-          lg: "70px",
         },
         marginX: {
           lg: "auto",
+        },
+        paddingLeft: {
+          md: "16px",
         },
         // padding: {
         //   xs: "0px",
@@ -40,8 +44,9 @@ const Videos = ({ videos, loader }) => {
           item
           xs={12}
           sm={12}
-          md={3}
+          md={4}
           lg={4}
+          xl={3}
           key={video.id.concat(index)}
         >
           <VideoCard

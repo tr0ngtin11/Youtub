@@ -34,9 +34,14 @@ const VideoCard = ({ video, idVideo }) => {
             borderRadius: {
               lg: "12px",
             },
-            height: "204px",
+            heigt: {
+              xs: "252px",
+              lg: "204px",
+            },
             "&:hover": {
-              borderRadius: "0 0 12px 12px",
+              borderRadius: {
+                lg: "0 0 12px 12px",
+              },
             },
           }}
         />

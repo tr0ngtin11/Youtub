@@ -18,9 +18,10 @@ const Navbar = () => {
         sx={{
           position: "sticky",
           backgroundColor: "#fff",
-          height: "40px",
+          height: "50px",
           overflowX: "hidden",
-          padding: " 0 10px",
+          padding: " 0px 10px",
+          paddingBottom: "4px",
           paddingTop: {
             xs: "10px",
           },
@@ -29,7 +30,7 @@ const Navbar = () => {
           maxWidth: {
             sm: "calc(100% - 20px)",
             xs: "calc(100% - 20px)",
-            md: "calc(100% - 20px)",
+            md: "calc(100% - 32px)",
             lg: "calc(100% - 80px)",
             sm: "calc(100% - 80px)",
           },

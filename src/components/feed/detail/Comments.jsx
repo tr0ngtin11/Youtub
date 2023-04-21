@@ -77,7 +77,7 @@ const Comments = () => {
           />
         </Box>
       </Box>
-      {/* <Comment /> */}
+      <Comment />
     </div>
   );
 };

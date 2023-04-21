@@ -1,8 +1,7 @@
 import { Avatar, Box, Stack, Typography } from "@mui/material";
-import { deepOrange } from "@mui/material/colors";
 import React from "react";
 
-const Comment = ({ content, author }) => {
+const Comment = () => {
   return (
     <Box
       sx={{

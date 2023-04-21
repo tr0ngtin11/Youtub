@@ -7,13 +7,16 @@ import {
   fetchSelectedVideoFail,
   fetchSelectedVideoLoading,
   fetchSelectedVideoSuccess,
+  setPageNumber,
+  getDataTop,
 } from "./videoSlice";
 
-export const fetchVideos = () => async (dispatch) => {
+export const fetchVideos = (pageNumber, pageToken) => async (dispatch) => {
   try {
     dispatch(fetchVideosLoading());
-    const response = await getVideos();
-    dispatch(fetchVideosSuccess(response.data.items));
+    dispatch(setPageNumber(pageNumber));
+    const response = await getVideos(pageToken);
+    dispatch(fetchVideosSuccess(response.data));
   } catch (error) {
     dispatch(fetchVideosFail(error.message));
   }
@@ -26,5 +29,15 @@ export const fetchSelectedVideo = (id) => async (dispatch) => {
     dispatch(fetchSelectedVideoSuccess(response.data.items[0]));
   } catch (error) {
     dispatch(fetchSelectedVideoFail(error.message));
+  }
+};
+
+export const fetchVideosTop = (pageToken) => async (dispatch) => {
+  try {
+    dispatch(fetchVideosLoading());
+    const response = await getVideos(pageToken);
+    dispatch(getDataTop(response.data));
+  } catch (error) {
+    dispatch(fetchVideosFail(error.message));
   }
 };

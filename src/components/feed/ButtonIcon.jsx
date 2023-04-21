@@ -8,7 +8,7 @@ const ButtonIcon = ({ name, icon }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mb: 4,
+        mb: 2,
         width: "calc(100% - 16px)",
         height: "80%",
         borderRadius: "4px",

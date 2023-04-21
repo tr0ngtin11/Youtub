@@ -2,22 +2,16 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Skeleton,
   Typography,
   Avatar,
-  useTheme,
   Box,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-const VideoCard = ({ video, idVideo }) => {
-  const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.videos);
-  const theme = useTheme();
+const VideoCard = React.forwardRef(({ video, idVideo }, ref) => {
   return (
-    <Link to={`/detail/${idVideo}`}>
+    <Link ref={ref} to={`/detail/${idVideo}`}>
       <Card
         sx={{
           mb: 2,
@@ -25,12 +19,14 @@ const VideoCard = ({ video, idVideo }) => {
           boxShadow: "none",
           cursor: "pointer",
           width: "100%",
+          position: "relative",
         }}
       >
         <CardMedia
           component="img"
           src={video.snippet.thumbnails.medium.url}
           sx={{
+            position: "relative",
             borderRadius: {
               lg: "12px",
             },
@@ -45,6 +41,22 @@ const VideoCard = ({ video, idVideo }) => {
             },
           }}
         />
+        <Box
+          sx={{
+            position: "absolute",
+            top: "178px",
+            right: "4px",
+            heigt: "12px",
+            padding: "3px 4px",
+            color: "#fff",
+            backgroundColor: "rgba(0,0,0,0.8)",
+            fontSize: "0.75rem",
+            borderRadius: "4px",
+            fontWeight: "500",
+          }}
+        >
+          2:22
+        </Box>
 
         <CardContent
           sx={{
@@ -74,8 +86,8 @@ const VideoCard = ({ video, idVideo }) => {
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
                   maxHeight: "4,4rem",
-
-                  fontSize: "1rem",
+                  lineHeight: "1.4rem",
+                  fontSize: "1.05rem",
                   fontWeight: "500",
                 }}
                 variant="h6"
@@ -129,6 +141,6 @@ const VideoCard = ({ video, idVideo }) => {
       </Card>
     </Link>
   );
-};
+});
 
 export default VideoCard;

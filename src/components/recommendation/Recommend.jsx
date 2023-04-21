@@ -1,6 +1,6 @@
 import React from "react";
 import { dataRecommended } from "../../utils/constants";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import ButtonRecommended from "./ButtonRecommended";
 
 import { Swiper, SwiperSlide } from "swiper/react";

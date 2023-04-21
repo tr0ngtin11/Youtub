@@ -1,20 +1,55 @@
-import { Box, Grid, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import SideBar from "./SideBar";
 import Recommend from "../recommendation/Recommend";
 import Videos from "./videos/Videos";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchVideos } from "../../reducer/video/videoActions";
-import { setListVideo } from "../../reducer/video/videoSlice";
+import { fetchVideos, fetchVideosTop } from "../../reducer/video/videoActions";
+import { ChangeData } from "../../reducer/video/videoSlice";
 const Feed = () => {
   const dispatch = useDispatch();
-  const { videos } = useSelector((state) => state.videos);
-  const theme = useTheme();
-  const [endIndex_state, setEndIndex_state] = useState(0);
+  const { data, page } = useSelector((state) => state.videos);
   const [displayedVideos, setDisplayedVideos] = useState([]);
+  const [arraySkeleton, setArraySkeleton] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const limit = 20;
-  const loader = useRef();
+  const loaderBottom = useRef();
+  const loaderTop = useRef();
+  const [isIntersectingTop, setIsIntersectingTop] = useState(false);
+  const [isIntersectingBottom, setIsIntersectingBottom] = useState(false);
+  //Bottom
+  useEffect(() => {
+    // Options is an object of configuration used to establish the values of Intersectionoberver
+    // Viewport is used as root
+    const options = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        console.log("intersecting Bottom", entries);
+        // setIsIntersectingBottom(true);
+        setPageNumber((prev) => prev + 1);
+      } else {
+        console.log("intersecting Bottom", entries);
+        // setIsIntersectingBottom(false);
+        const NewArray = displayedVideos.map((item, index) => {
+          // if (index === displayedVideos.length - 2) {
+          console.log("item", item);
+          // }
+          return item;
+        });
+        console.log("NewArray", NewArray);
+        // setDisplayedVideos(NewArray);
+        // dispatch(ChangeData(NewArray));
+      }
+    }, options);
+    if (loaderBottom.current) {
+      observer.observe(loaderBottom.current);
+    }
+  }, []);
+  //Top
 
   useEffect(() => {
     // Options is an object of configuration used to establish the values of Intersectionoberver
@@ -27,45 +62,66 @@ const Feed = () => {
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log(entries[0]);
-        setPageNumber((prev) => prev + 1);
-        dispatch(fetchVideos());
+        console.log("intersecting Top", entries);
+        // setIsIntersectingTop(true);
+        setPageNumber((prev) => prev - 1);
+      } else {
+        console.log("intersecting Top", entries);
+        // setIsIntersectingTop(false);
+        const NewArray = displayedVideos.map((item, index) => {
+          // if (index === displayedVideos.length - 2) {
+          console.log("item", item);
+          // }
+          return item;
+        });
+        console.log("NewArray", NewArray);
+        // setDisplayedVideos(NewArray);
+        // dispatch(ChangeData(NewArray));
       }
     }, options);
-    if (loader.current) {
-      observer.observe(loader.current);
+    if (loaderTop.current) {
+      observer.observe(loaderTop.current);
     }
-    //cleanup function
-    // return () => {
-    //   if (loader.current) {
-    //     observer.unobserve(loader.current);
-    //   }
-    // };
   }, []);
 
   useEffect(() => {
-    console.log(videos);
-    dispatch(fetchVideos());
-  }, [endIndex_state]);
-  useEffect(() => {
-    const startIndex = (pageNumber - 1) * limit;
-    const endIndex = pageNumber * limit;
-    const newVideos = videos.slice(startIndex, endIndex);
-
-    if (videos.length > 0) {
-      if (endIndex > videos.length) {
-        setEndIndex_state(endIndex);
-      }
+    if (isIntersectingTop && isIntersectingBottom) {
+      const pageToke = data[pageNumber - 1]?.prevPageToken;
+      console.log("pageToke", pageToke);
+      // dispatch(fetchVideosTop(pageToke));
     }
+  }, [isIntersectingBottom, isIntersectingTop]);
 
-    console.log(pageNumber);
-    console.log(startIndex);
-    console.log(endIndex);
-    setDisplayedVideos((prevVideos) => [...prevVideos, ...newVideos]);
-  }, [pageNumber, videos]);
+  useEffect(() => {
+    dispatch(fetchVideos(pageNumber, data.slice(-1).pop()?.nextPageToken));
+    console.log("data", pageNumber);
+  }, [pageNumber, dispatch]);
+  // useEffect(() => {
+  //   const newVideos = (data.length > 0 && data.slice(-1).pop()?.items) || [];
+  //   if (displayedVideos.length <= 25) {
+  //     setDisplayedVideos((prev) => [...prev, ...newVideos]);
+  //   } else {
+  //     const undefinedArray = displayedVideos.map((item, index) => undefined);
+  //     setDisplayedVideos(() => [...undefinedArray, ...newVideos]);
+  //   }
+  // }, [data, dispatch]);
+
+  useEffect(() => {
+    dispatch(ChangeData(pageNumber));
+  }, [pageNumber]);
 
   return (
-    <Grid columns={16} container spacing={1}>
+    <Grid
+      columns={{
+        xs: 16,
+        sm: 16,
+        md: 16,
+        lg: 24,
+        xl: 16,
+      }}
+      container
+      spacing={1}
+    >
       <Grid
         sx={{
           display: {
@@ -82,7 +138,7 @@ const Feed = () => {
       >
         <SideBar />
       </Grid>
-      <Grid item xs={16} sm={16} md={16} lg={15} xl={15}>
+      <Grid item xs={16} sm={16} md={16} lg={23} xl={15}>
         <Box
           sx={{
             maxWidth: {
@@ -90,7 +146,6 @@ const Feed = () => {
               xs: "100%",
               md: "100%",
               lg: "calc(100% - 80px)",
-              sm: "calc(100% - 80px)",
             },
             marginTop: {
               lg: "20px",
@@ -101,12 +156,20 @@ const Feed = () => {
             zIndex: 1,
             backgroundColor: "#fff",
             pb: 1,
-            top: "20px",
+            top: {
+              sm: "0",
+            },
           }}
         >
           <Recommend quantity={8} />
         </Box>
-        <Videos videos={displayedVideos} loader={loader} />
+        <Videos
+          videos={displayedVideos}
+          arraySkeleton={arraySkeleton}
+          loaderBottom={loaderBottom}
+          loaderTop={loaderTop}
+          pageNumber={pageNumber}
+        />
       </Grid>
     </Grid>
   );

@@ -1,6 +1,6 @@
 html,
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", "Arial", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,6 +12,11 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;
-  height: 5px;
+  width: 0px; /* Độ rộng thanh cuộn */
+}
+
+/* Thiết lập màu sắc cho thanh cuộn */
+::-webkit-scrollbar-thumb {
+  background-color: #555; /* Màu sắc của thanh cuộn */
+  border-radius: 10px; /* Bo tròn viền của thanh cuộn */
 }

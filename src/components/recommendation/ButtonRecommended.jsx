@@ -1,9 +1,11 @@
 import { Box } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const ButtonRecommended = ({ name }) => {
+  const { t } = useTranslation(["home"]);
   const buttonRec =
-    (name == "Tất cả") == true ? (
+    (name === "Tất cả") === true ? (
       <Box
         sx={{
           textAlign: "center",
@@ -14,7 +16,13 @@ const ButtonRecommended = ({ name }) => {
           borderRadius: "6px",
         }}
       >
-        {name}
+        {t(
+          `home:${name
+            .toLowerCase()
+            .replace(/\s/g, "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")}`
+        )}
       </Box>
     ) : (
       <Box
@@ -27,7 +35,13 @@ const ButtonRecommended = ({ name }) => {
           borderRadius: "8px",
         }}
       >
-        {name}
+        {t(
+          `home:${name
+            .toLowerCase()
+            .replace(/\s/g, "")
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")}`
+        )}
       </Box>
     );
 

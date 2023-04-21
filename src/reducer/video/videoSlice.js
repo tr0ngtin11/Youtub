@@ -1,10 +1,10 @@
-import { light } from "@mui/material/styles/createPalette";
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  videos: [],
+  data: [],
   isLoading: false,
+  isLoadingSelectedVideo: false,
   selectedVideo: null,
-  pageNUmber: 0,
+  page: 1,
 };
 
 const videoSlice = createSlice({
@@ -17,22 +17,43 @@ const videoSlice = createSlice({
     },
     fetchVideosSuccess: (state, { payload }) => {
       state.isLoading = false;
-
-      state.videos = [...state.videos.slice(0, 20), ...payload];
+      state.data = [
+        ...state.data,
+        {
+          nextPageToken: payload.nextPageToken,
+          prevPageToken: payload.prevPageToken,
+          items: payload.items,
+          page: state.page++,
+        },
+      ];
     },
     fetchVideosFail: (state, { payload }) => {
-      state.isLoading = false;
+      state.isLoadingSelectedVideo = false;
     },
     fetchSelectedVideoLoading: (state) => {
-      state.isLoading = true;
+      state.isLoadingSelectedVideo = true;
     },
     fetchSelectedVideoSuccess: (state, { payload }) => {
-      state.isLoading = false;
+      state.isLoadingSelectedVideo = false;
       state.selectedVideo = payload;
     },
     fetchSelectedVideoFail: (state, { payload }) => {
-      state.isLoading = false;
+      state.isLoadingSelectedVideo = false;
     },
+    setPageNumber: (state, { payload }) => {
+      state.page = state.page;
+    },
+    ChangeData: (state, { payload }) => {
+      if (payload > 1) {
+        state.data.forEach((item, index) => {
+          if (index === payload - 2) {
+            const emptyItems = item.items.map((item) => undefined);
+            item.items = emptyItems;
+          }
+        });
+      }
+    },
+    getDataTop: (state, { payload }) => {},
   },
 });
 
@@ -46,6 +67,9 @@ export const {
   fetchSelectedVideoLoading,
   fetchSelectedVideoSuccess,
   setListVideo,
+  setPageNumber,
+  ChangeData,
+  getDataTop,
 } = actions;
 
 export default reducer;

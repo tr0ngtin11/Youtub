@@ -2,7 +2,11 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  params: { playlistId: "RDZiQo7nAkQHU", part: "snippet", maxResults: "50" },
+  params: {
+    playlistId: "RDZiQo7nAkQHU",
+    part: "snippet",
+    maxResults: "25",
+  },
   headers: {
     "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
     "X-RapidAPI-Host": process.env.REACT_APP_RAPIDAPI_HOST,
@@ -25,7 +29,7 @@ axios.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    return response.data.items;
+    return response.data;
   },
   function (error) {
     // Any status codes that falls outside the range of 2xx cause this function to trigger

@@ -1,77 +1,14 @@
 import { Box, Grid, Skeleton } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import VideoCard from "./VideoCard";
 import { useSelector } from "react-redux";
+import ListPage from "./ListPage";
 const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
   const { isLoading, data } = useSelector((state) => state.videos);
-  const renderVideo = () => {
-    console.log("videos", videos);
-    console.log("dataLENGTH", data.length);
-    console.log("page", pageNumber);
 
-    var NewList = data.map((ob, index) => {
-      return ob.items.map((video, index) => {
-        if (video === undefined) {
-          return (
-            <Grid
-              sx={{
-                paddingTop: "0px",
-              }}
-              item
-              xs={12}
-              sm={12}
-              md={4}
-              lg={4}
-              xl={3}
-              key={index}
-            >
-              <Skeleton
-                sx={{
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "block",
-                    lg: "block",
-                    xl: "block",
-                  },
-                  mb: "20px",
-                }}
-                animation="wave"
-                variant="rect"
-                // width="30%"
-                height={250}
-              />
-            </Grid>
-          );
-        } else {
-          return (
-            <Grid
-              sx={{
-                paddingTop: "0px",
-              }}
-              item
-              xs={12}
-              sm={12}
-              md={4}
-              lg={4}
-              xl={3}
-              key={video.id.concat(index)}
-            >
-              
-              <VideoCard
-                key={video.id}
-                video={video}
-                idVideo={video.snippet.resourceId.videoId}
-              />
-            </Grid>
-          );
-        }
-      });
-    });
-
-    return NewList;
-  };
-
+  useEffect(() => {
+    console.log("videos", loaderBottom);
+  });
   return (
     <Box
       sx={{
@@ -108,9 +45,13 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
         }}
         container
       >
-        <div ref={loaderTop}></div>
-        {renderVideo()}
-        <div ref={loaderBottom}></div>
+        {data.map((obj) => (
+          <ListPage
+            obj={obj}
+            loaderTop={loaderTop}
+            loaderBottom={loaderBottom}
+          />
+        ))}
         {isLoading && (
           <>
             <Skeleton

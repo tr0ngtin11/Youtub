@@ -164,8 +164,6 @@ const Feed = () => {
           <Recommend quantity={8} />
         </Box>
         <Videos
-          videos={displayedVideos}
-          arraySkeleton={arraySkeleton}
           loaderBottom={loaderBottom}
           loaderTop={loaderTop}
           pageNumber={pageNumber}

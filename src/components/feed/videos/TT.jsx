@@ -1,8 +1,6 @@
-import { use } from "i18next";
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 const TT = () => {
-  const [hasMore, setHasMore] = useState(true);
   const [dataSource, setDataSource] = useState(Array.from({ length: 20 }));
   const [page, setPage] = useState(1);
   const fetchMore = () => {
@@ -13,7 +11,7 @@ const TT = () => {
   useEffect(() => {
     setDataSource([]);
     setPage(1);
-  }, [dataSource]);
+  }, [page, dataSource]);
   return (
     <div className="App">
       <InfiniteScroll

@@ -1,5 +1,5 @@
 import { Box, Grid, Skeleton } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import VideoCard from "./VideoCard";
 import { useSelector } from "react-redux";
 const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
@@ -57,7 +57,6 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
               xl={3}
               key={video.id.concat(index)}
             >
-              
               <VideoCard
                 key={video.id}
                 video={video}

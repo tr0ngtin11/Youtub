@@ -4,13 +4,11 @@ import SideBar from "./SideBar";
 import Recommend from "../recommendation/Recommend";
 import Videos from "./videos/Videos";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchVideos, fetchVideosTop } from "../../reducer/video/videoActions";
+import { fetchVideos } from "../../reducer/video/videoActions";
 import { ChangeData } from "../../reducer/video/videoSlice";
 const Feed = () => {
   const dispatch = useDispatch();
-  const { data, page } = useSelector((state) => state.videos);
-  const [displayedVideos, setDisplayedVideos] = useState([]);
-  const [arraySkeleton, setArraySkeleton] = useState([]);
+  const { data } = useSelector((state) => state.videos);
   const [pageNumber, setPageNumber] = useState(1);
   const loaderBottom = useRef();
   const loaderTop = useRef();
@@ -31,18 +29,6 @@ const Feed = () => {
         console.log("intersecting Bottom", entries);
         // setIsIntersectingBottom(true);
         setPageNumber((prev) => prev + 1);
-      } else {
-        console.log("intersecting Bottom", entries);
-        // setIsIntersectingBottom(false);
-        const NewArray = displayedVideos.map((item, index) => {
-          // if (index === displayedVideos.length - 2) {
-          console.log("item", item);
-          // }
-          return item;
-        });
-        console.log("NewArray", NewArray);
-        // setDisplayedVideos(NewArray);
-        // dispatch(ChangeData(NewArray));
       }
     }, options);
     if (loaderBottom.current) {
@@ -63,20 +49,7 @@ const Feed = () => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         console.log("intersecting Top", entries);
-        // setIsIntersectingTop(true);
         setPageNumber((prev) => prev - 1);
-      } else {
-        console.log("intersecting Top", entries);
-        // setIsIntersectingTop(false);
-        const NewArray = displayedVideos.map((item, index) => {
-          // if (index === displayedVideos.length - 2) {
-          console.log("item", item);
-          // }
-          return item;
-        });
-        console.log("NewArray", NewArray);
-        // setDisplayedVideos(NewArray);
-        // dispatch(ChangeData(NewArray));
       }
     }, options);
     if (loaderTop.current) {
@@ -87,24 +60,12 @@ const Feed = () => {
   useEffect(() => {
     if (isIntersectingTop && isIntersectingBottom) {
       const pageToke = data[pageNumber - 1]?.prevPageToken;
-      console.log("pageToke", pageToke);
-      // dispatch(fetchVideosTop(pageToke));
     }
   }, [isIntersectingBottom, isIntersectingTop]);
 
   useEffect(() => {
     dispatch(fetchVideos(pageNumber, data.slice(-1).pop()?.nextPageToken));
-    console.log("data", pageNumber);
   }, [pageNumber, dispatch]);
-  // useEffect(() => {
-  //   const newVideos = (data.length > 0 && data.slice(-1).pop()?.items) || [];
-  //   if (displayedVideos.length <= 25) {
-  //     setDisplayedVideos((prev) => [...prev, ...newVideos]);
-  //   } else {
-  //     const undefinedArray = displayedVideos.map((item, index) => undefined);
-  //     setDisplayedVideos(() => [...undefinedArray, ...newVideos]);
-  //   }
-  // }, [data, dispatch]);
 
   useEffect(() => {
     dispatch(ChangeData(pageNumber));
@@ -164,8 +125,6 @@ const Feed = () => {
           <Recommend quantity={8} />
         </Box>
         <Videos
-          videos={displayedVideos}
-          arraySkeleton={arraySkeleton}
           loaderBottom={loaderBottom}
           loaderTop={loaderTop}
           pageNumber={pageNumber}

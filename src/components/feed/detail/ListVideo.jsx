@@ -1,11 +1,10 @@
 import { Box } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroll from "react-infinite-scroll-component";
-import CardDeTail from "./CardDeTail";
 import { fetchVideos } from "../../../reducer/video/videoActions";
-import { List } from "react-virtualized";
 import TT from "../videos/TT";
+import CardDeTail from "./CardDeTail";
+
 const ListVideo = () => {
   const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(0);

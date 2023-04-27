@@ -1,6 +1,5 @@
 import { Box, Grid, Skeleton } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import VideoCard from "./VideoCard";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ListPage from "./ListPage";
 const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {

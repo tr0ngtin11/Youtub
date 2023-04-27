@@ -1,14 +1,15 @@
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import ReplyIcon from "@mui/icons-material/Reply";
+import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { fetchSelectedVideo } from "../../../reducer/video/videoActions";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ReplyIcon from "@mui/icons-material/Reply";
-import { useTranslation } from "react-i18next";
+
 const DetailVideo = () => {
   const { t } = useTranslation("detail");
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const DetailVideo = () => {
             }}
           >
             <img
-              src="https://yt3.ggpht.com/B6fTtYN-Wtm1Gi-VK4ZPdWof0vfEKYOvbax_HtfExRErG00seqMuCYR1YFQWH0x92KITAUAms4U=s88-c-k-c0x00ffffff-no-rj"
+              src="https://picsum.photos/600/400"
               style={{
                 width: "40px",
                 height: "40px",

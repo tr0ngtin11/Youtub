@@ -135,7 +135,7 @@ const Navbar = () => {
             }}
           >
             <img
-              src="https://www.gstatic.com/inputtools/images/tia.png"
+              src="https://picsum.photos/600/400"
               alt="a"
             />
           </Box>

@@ -1,11 +1,12 @@
 import { Box, Grid } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import SideBar from "./SideBar";
-import Recommend from "../recommendation/Recommend";
-import Videos from "./videos/Videos";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchVideos, fetchVideosTop } from "../../reducer/video/videoActions";
+import { fetchVideos } from "../../reducer/video/videoActions";
 import { ChangeData } from "../../reducer/video/videoSlice";
+import Recommend from "../recommendation/Recommend";
+import SideBar from "./SideBar";
+import Videos from "./videos/Videos";
+
 const Feed = () => {
   const dispatch = useDispatch();
   const { data, page } = useSelector((state) => state.videos);

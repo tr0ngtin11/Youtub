@@ -1,6 +1,6 @@
-import { use } from "i18next";
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
+
 const TT = () => {
   const [hasMore, setHasMore] = useState(true);
   const [dataSource, setDataSource] = useState(Array.from({ length: 20 }));

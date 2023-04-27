@@ -1,14 +1,15 @@
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import {
+  Avatar,
+  Box,
   Card,
   CardContent,
   CardMedia,
   Typography,
-  Avatar,
-  Box,
 } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+
 const VideoCard = React.forwardRef(({ video, idVideo }, ref) => {
   return (
     <Link ref={ref} to={`/detail/${idVideo}`}>
@@ -24,7 +25,7 @@ const VideoCard = React.forwardRef(({ video, idVideo }, ref) => {
       >
         <CardMedia
           component="img"
-          src={video.snippet.thumbnails.medium.url}
+          src="https://picsum.photos/600/400"
           sx={{
             position: "relative",
             borderRadius: {

@@ -20,7 +20,7 @@ const CardDeTail = ({ item }) => {
       >
         <CardMedia
           component="img"
-          src={item?.snippet.thumbnails.medium.url}
+          src="https://picsum.photos/600/400"
           sx={{
             borderRadius: "12px",
             height: "104px",

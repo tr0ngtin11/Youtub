@@ -1,15 +1,15 @@
+import DehazeIcon from "@mui/icons-material/Dehaze";
+import LanguageIcon from "@mui/icons-material/Language";
+import MicIcon from "@mui/icons-material/Mic";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import SearchIcon from "@mui/icons-material/Search";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 import { Avatar, Box, Button } from "@mui/material";
+import { deepOrange } from "@mui/material/colors";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { logo } from "../../utils/constants";
-import VideoCallIcon from "@mui/icons-material/VideoCall";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { deepOrange } from "@mui/material/colors";
-import SearchIcon from "@mui/icons-material/Search";
-import DehazeIcon from "@mui/icons-material/Dehaze";
-import MicIcon from "@mui/icons-material/Mic";
-import LanguageIcon from "@mui/icons-material/Language";
-import { useTranslation } from "react-i18next";
 const Navbar = () => {
   const { i18n, t } = useTranslation(["detail,home"]);
   const [language, setLanguage] = useState("vi");
@@ -135,7 +135,7 @@ const Navbar = () => {
             }}
           >
             <img
-              src="https://picsum.photos/600/400"
+              src="https://www.gstatic.com/inputtools/images/tia.png"
               alt="a"
             />
           </Box>

@@ -1,37 +1,27 @@
 import { Box } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroll from "react-infinite-scroll-component";
-import CardDeTail from "./CardDeTail";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { fetchVideos } from "../../../reducer/video/videoActions";
-import { List } from "react-virtualized";
-import TT from "../videos/TT";
 const ListVideo = () => {
   const dispatch = useDispatch();
-  const [pageNumber, setPageNumber] = useState(0);
-  const { data } = useSelector((state) => state.videos);
-  const [displayedData, setDisplayedData] = useState(data || []);
-  const fetchData = () => {
-    setPageNumber((prev) => prev + 1);
-  };
-
-  useEffect(() => {
-    setDisplayedData((prev) => [...prev, ...data]);
-  }, [data]);
+  // const [pageNumber, setPageNumber] = useState(0);
+  // const fetchData = () => {
+  //   setPageNumber((prev) => prev + 1);
+  // };
 
   useEffect(() => {
     dispatch(fetchVideos());
-  }, [pageNumber, dispatch]);
+  }, [dispatch]);
 
-  const rowRenderer = ({ key, index, style }) => {
-    return (
-      <div key={key} style={style}>
-        {data.map((item, index) => {
-          return <CardDeTail key={index} item={item} />;
-        })}
-      </div>
-    );
-  };
+  // const rowRenderer = ({ key, index, style }) => {
+  //   return (
+  //     <div key={key} style={style}>
+  //       {data.map((item, index) => {
+  //         return <CardDeTail key={index} item={item} />;
+  //       })}
+  //     </div>
+  //   );
+  // };
   return (
     <Box
       sx={{
@@ -50,9 +40,7 @@ const ListVideo = () => {
           xl: "40px",
         },
       }}
-    >
-      <TT />
-    </Box>
+    ></Box>
   );
 };
 

@@ -19,7 +19,7 @@ const DetailVideo = () => {
 
   useEffect(() => {
     dispatch(fetchSelectedVideo(id));
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <>
@@ -36,6 +36,7 @@ const DetailVideo = () => {
       >
         <Box>
           <iframe
+            title={selectedVideo?.snippet?.title}
             key={selectedVideo?.id?.videoId}
             src={`https://www.youtube.com/embed/${id}`}
             width="100%"
@@ -88,6 +89,7 @@ const DetailVideo = () => {
             }}
           >
             <img
+              alt="avatar"
               src="https://yt3.ggpht.com/B6fTtYN-Wtm1Gi-VK4ZPdWof0vfEKYOvbax_HtfExRErG00seqMuCYR1YFQWH0x92KITAUAms4U=s88-c-k-c0x00ffffff-no-rj"
               style={{
                 width: "40px",

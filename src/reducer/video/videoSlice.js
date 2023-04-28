@@ -41,7 +41,7 @@ const videoSlice = createSlice({
       state.isLoadingSelectedVideo = false;
     },
     setPageNumber: (state, { payload }) => {
-      state.page = state.page;
+      state.page = payload;
     },
     ChangeData: (state, { payload }) => {
       if (payload > 1) {

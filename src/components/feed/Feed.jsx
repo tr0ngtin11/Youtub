@@ -12,8 +12,8 @@ const Feed = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const loaderBottom = useRef();
   const loaderTop = useRef();
-  const [isIntersectingTop, setIsIntersectingTop] = useState(false);
-  const [isIntersectingBottom, setIsIntersectingBottom] = useState(false);
+  // const [isIntersectingTop, setIsIntersectingTop] = useState(false);
+  // const [isIntersectingBottom, setIsIntersectingBottom] = useState(false);
   //Bottom
   useEffect(() => {
     // Options is an object of configuration used to establish the values of Intersectionoberver
@@ -57,19 +57,19 @@ const Feed = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (isIntersectingTop && isIntersectingBottom) {
-      const pageToke = data[pageNumber - 1]?.prevPageToken;
-    }
-  }, [isIntersectingBottom, isIntersectingTop]);
+  // useEffect(() => {
+  //   if (isIntersectingTop && isIntersectingBottom) {
+  //     const pageToke = data[pageNumber - 1]?.prevPageToken;
+  //   }
+  // }, [isIntersectingBottom, isIntersectingTop]);
 
   useEffect(() => {
     dispatch(fetchVideos(pageNumber, data.slice(-1).pop()?.nextPageToken));
-  }, [pageNumber, dispatch]);
+  }, [pageNumber, dispatch, data]);
 
   useEffect(() => {
     dispatch(ChangeData(pageNumber));
-  }, [pageNumber]);
+  }, [pageNumber, dispatch]);
 
   return (
     <Grid
@@ -98,6 +98,7 @@ const Feed = () => {
         xl={1}
       >
         <SideBar />
+        BBBBaa333
       </Grid>
       <Grid item xs={16} sm={16} md={16} lg={23} xl={15}>
         <Box

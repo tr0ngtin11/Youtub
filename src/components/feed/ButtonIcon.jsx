@@ -1,5 +1,4 @@
-import { IconButton, Typography } from "@mui/material";
-import React from "react";
+import { IconButton, Typography } from "@mui/material"
 
 const ButtonIcon = ({ name, icon }) => {
   return (
@@ -29,7 +28,7 @@ const ButtonIcon = ({ name, icon }) => {
         {name}
       </Typography>
     </IconButton>
-  );
-};
+  )
+}
 
-export default ButtonIcon;
+export default ButtonIcon

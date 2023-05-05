@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideos } from '../../reducer/video/videoActions';
 import { ChangeData } from '../../reducer/video/videoSlice';
 const Feed = () => {
-  const [a, setA] = useState(1);
+  const [n, setA] = useState(1);
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.videos);
   const [pageNumber, setPageNumber] = useState(1);

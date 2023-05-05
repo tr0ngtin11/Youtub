@@ -2,7 +2,6 @@ import { IconButton, Typography } from "@mui/material";
 import React from "react";
 
 const ButtonIcon = ({ name, icon }) => {
-  const error = "error"
   return (
     <IconButton
       sx={{

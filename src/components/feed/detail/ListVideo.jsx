@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { fetchVideos } from "../../../reducer/video/videoActions";
+import { Box } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchVideos } from '../../../reducer/video/videoActions';
 const ListVideo = () => {
   const dispatch = useDispatch();
   // const [pageNumber, setPageNumber] = useState(0);
@@ -26,18 +26,18 @@ const ListVideo = () => {
     <Box
       sx={{
         paddingLeft: {
-          xs: "0px",
-          sm: "0px",
-          md: "40px",
-          lg: "40px",
-          xl: "40px",
+          xs: '0px',
+          sm: '0px',
+          md: '40px',
+          lg: '40px',
+          xl: '40px',
         },
         paddingRight: {
-          xs: "0px",
-          sm: "0px",
-          md: "40px",
-          lg: "40px",
-          xl: "40px",
+          xs: '0px',
+          sm: '0px',
+          md: '40px',
+          lg: '40px',
+          xl: '40px',
         },
       }}
     ></Box>

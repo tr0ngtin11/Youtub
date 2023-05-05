@@ -1,5 +1,4 @@
 import { Stack } from "@mui/material";
-import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import ButtonIcon from "./ButtonIcon";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";

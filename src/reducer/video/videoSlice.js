@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   data: [],
   isLoading: false,
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const videoSlice = createSlice({
-  name: "videos",
+  name: 'videos',
   initialState,
 
   reducers: {
@@ -27,7 +27,7 @@ const videoSlice = createSlice({
         },
       ];
     },
-    fetchVideosFail: (state, { payload }) => {
+    fetchVideosFail: (state) => {
       state.isLoadingSelectedVideo = false;
     },
     fetchSelectedVideoLoading: (state) => {
@@ -37,7 +37,7 @@ const videoSlice = createSlice({
       state.isLoadingSelectedVideo = false;
       state.selectedVideo = payload;
     },
-    fetchSelectedVideoFail: (state, { payload }) => {
+    fetchSelectedVideoFail: (state) => {
       state.isLoadingSelectedVideo = false;
     },
     setPageNumber: (state, { payload }) => {
@@ -47,13 +47,12 @@ const videoSlice = createSlice({
       if (payload > 1) {
         state.data.forEach((item, index) => {
           if (index === payload - 2) {
-            const emptyItems = item.items.map((item) => undefined);
+            const emptyItems = item.items.map(() => undefined);
             item.items = emptyItems;
           }
         });
       }
     },
-    getDataTop: (state, { payload }) => {},
   },
 });
 

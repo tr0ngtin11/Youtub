@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import React from "react";
 import DetailVideo from "../components/feed/detail/DetailVideo";
 import ListVideo from "../components/feed/detail/ListVideo";
 

@@ -1,12 +1,13 @@
-import { Box, Grid } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
-import SideBar from "./SideBar";
-import Recommend from "../recommendation/Recommend";
-import Videos from "./videos/Videos";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchVideos } from "../../reducer/video/videoActions";
-import { ChangeData } from "../../reducer/video/videoSlice";
+import { Box, Grid } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
+import SideBar from './SideBar';
+import Recommend from '../recommendation/Recommend';
+import Videos from './videos/Videos';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchVideos } from '../../reducer/video/videoActions';
+import { ChangeData } from '../../reducer/video/videoSlice';
 const Feed = () => {
+  const [a, setA] = useState(1);
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.videos);
   const [pageNumber, setPageNumber] = useState(1);
@@ -20,13 +21,13 @@ const Feed = () => {
     // Viewport is used as root
     const options = {
       root: null,
-      rootMargin: "20px",
+      rootMargin: '20px',
       threshold: 1.0,
     };
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log("intersecting Bottom", entries);
+        console.log('intersecting Bottom', entries);
         // setIsIntersectingBottom(true);
         setPageNumber((prev) => prev + 1);
       }
@@ -42,13 +43,13 @@ const Feed = () => {
     // Viewport is used as root
     const options = {
       root: null,
-      rootMargin: "20px",
+      rootMargin: '20px',
       threshold: 1.0,
     };
 
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        console.log("intersecting Top", entries);
+        console.log('intersecting Top', entries);
         setPageNumber((prev) => prev - 1);
       }
     }, options);
@@ -86,11 +87,11 @@ const Feed = () => {
       <Grid
         sx={{
           display: {
-            xs: "none",
-            sm: "none",
-            md: "none",
-            lg: "block",
-            xl: "block",
+            xs: 'none',
+            sm: 'none',
+            md: 'none',
+            lg: 'block',
+            xl: 'block',
           },
         }}
         item
@@ -98,28 +99,27 @@ const Feed = () => {
         xl={1}
       >
         <SideBar />
-        BBBBaa333
       </Grid>
       <Grid item xs={16} sm={16} md={16} lg={23} xl={15}>
         <Box
           sx={{
             maxWidth: {
-              sm: "100%",
-              xs: "100%",
-              md: "100%",
-              lg: "calc(100% - 80px)",
+              sm: '100%',
+              xs: '100%',
+              md: '100%',
+              lg: 'calc(100% - 80px)',
             },
             marginTop: {
-              lg: "20px",
+              lg: '20px',
             },
-            marginX: "auto",
-            height: "40px",
-            position: "sticky",
+            marginX: 'auto',
+            height: '40px',
+            position: 'sticky',
             zIndex: 1,
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
             pb: 1,
             top: {
-              sm: "0",
+              sm: '0',
             },
           }}
         >

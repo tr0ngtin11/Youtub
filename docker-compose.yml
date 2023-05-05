@@ -1,15 +1,14 @@
 version: "3"
 services:
   frontend:
+    stdin_open: true
+    tty: true
     container_name: frontend-app
     build:
+      context: .clean
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-      WATCHPACK_POLLING: "true"
-
     volumes:
       - ./:/app
-    command: ["npm", "start"]
+      - /app/node_modules

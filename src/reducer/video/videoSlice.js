@@ -27,7 +27,7 @@ const videoSlice = createSlice({
         },
       ];
     },
-    fetchVideosFail: (state) => {
+    fetchVideosFail: (state, { payload }) => {
       state.isLoadingSelectedVideo = false;
     },
     fetchSelectedVideoLoading: (state) => {
@@ -37,7 +37,7 @@ const videoSlice = createSlice({
       state.isLoadingSelectedVideo = false;
       state.selectedVideo = payload;
     },
-    fetchSelectedVideoFail: (state) => {
+    fetchSelectedVideoFail: (state, { payload }) => {
       state.isLoadingSelectedVideo = false;
     },
     setPageNumber: (state, { payload }) => {
@@ -47,12 +47,13 @@ const videoSlice = createSlice({
       if (payload > 1) {
         state.data.forEach((item, index) => {
           if (index === payload - 2) {
-            const emptyItems = item.items.map(() => undefined);
+            const emptyItems = item.items.map((item) => undefined);
             item.items = emptyItems;
           }
         });
       }
     },
+    getDataTop: (state, { payload }) => {},
   },
 });
 

@@ -1,11 +1,12 @@
-import instance from "./baseApi";
-
-export const getVideos = async (pageToken) => {
-  const response = await instance.get("/playlistItems", {
+import instance from './baseApi';
+export const getVideos = async (page, pagesize) => {
+  const response = await instance.get('/video', {
     params: {
-      pageToken,
+      page,
+      pagesize,
     },
   });
-  console.log(response);
+
+  console.log('b', response);
   return response;
 };

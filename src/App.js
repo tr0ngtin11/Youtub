@@ -1,9 +1,9 @@
-import { Box } from "@mui/material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Navbar from "./components/navbar/Navbar";
-import Detailvideo from "./pages/Detailvideo";
-import { Suspense } from "react";
+import { Box } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Homepage from './pages/Homepage';
+import Navbar from './components/navbar/Navbar';
+import Detailvideo from './pages/Detailvideo';
+import { Suspense } from 'react';
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,7 +12,7 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" exact element={<Homepage />} />
-            <Route path="detail/:id" element={<Detailvideo />} />
+            <Route path="/:id" element={<Detailvideo />} />
           </Routes>
         </Box>
       </Suspense>

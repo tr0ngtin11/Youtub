@@ -1,9 +1,11 @@
 import { Box } from '@mui/material';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideos } from '../../../reducer/video/videoActions';
+import CardDeTail from './CardDeTail';
 const ListVideo = () => {
   const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.videos);
   // const [pageNumber, setPageNumber] = useState(0);
   // const fetchData = () => {
   //   setPageNumber((prev) => prev + 1);
@@ -13,15 +15,15 @@ const ListVideo = () => {
     dispatch(fetchVideos());
   }, [dispatch]);
 
-  // const rowRenderer = ({ key, index, style }) => {
-  //   return (
-  //     <div key={key} style={style}>
-  //       {data.map((item, index) => {
-  //         return <CardDeTail key={index} item={item} />;
-  //       })}
-  //     </div>
-  //   );
-  // };
+  const rowRenderer = () => {
+    return (
+      <div>
+        {data.map((ob) =>
+          ob.items.map((item) => <CardDeTail key={item._id} item={item} />),
+        )}
+      </div>
+    );
+  };
   return (
     <Box
       sx={{
@@ -40,7 +42,9 @@ const ListVideo = () => {
           xl: '40px',
         },
       }}
-    ></Box>
+    >
+      {rowRenderer()}
+    </Box>
   );
 };
 

@@ -5,54 +5,60 @@ import {
   Typography,
   Avatar,
   Box,
-} from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+} from '@mui/material';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 const VideoCard = React.forwardRef(({ video, idVideo }, ref) => {
   return (
-    <Link ref={ref} to={`/detail/${idVideo}`}>
+    <Link
+      ref={ref}
+      to={`/${video.id}`}
+      state={{
+        idVideo: idVideo,
+      }}
+    >
       <Card
         sx={{
           mb: 2,
-          border: "none",
-          boxShadow: "none",
-          cursor: "pointer",
-          width: "100%",
-          position: "relative",
+          border: 'none',
+          boxShadow: 'none',
+          cursor: 'pointer',
+          width: '100%',
+          position: 'relative',
         }}
       >
         <CardMedia
           component="img"
           src={video.snippet.thumbnails.medium.url}
           sx={{
-            position: "relative",
+            position: 'relative',
             borderRadius: {
-              lg: "12px",
+              lg: '12px',
             },
             heigt: {
-              xs: "252px",
-              lg: "204px",
+              xs: '252px',
+              lg: '204px',
             },
-            "&:hover": {
+            '&:hover': {
               borderRadius: {
-                lg: "0 0 12px 12px",
+                lg: '0 0 12px 12px',
               },
             },
           }}
         />
         <Box
           sx={{
-            position: "absolute",
-            top: "178px",
-            right: "4px",
-            heigt: "12px",
-            padding: "3px 4px",
-            color: "#fff",
-            backgroundColor: "rgba(0,0,0,0.8)",
-            fontSize: "0.75rem",
-            borderRadius: "4px",
-            fontWeight: "500",
+            position: 'absolute',
+            top: '178px',
+            right: '4px',
+            heigt: '12px',
+            padding: '3px 4px',
+            color: '#fff',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            fontSize: '0.75rem',
+            borderRadius: '4px',
+            fontWeight: '500',
           }}
         >
           2:22
@@ -60,76 +66,76 @@ const VideoCard = React.forwardRef(({ video, idVideo }, ref) => {
 
         <CardContent
           sx={{
-            padding: "12px 0px",
+            padding: '12px 0px',
           }}
         >
           <Box
             sx={{
-              display: "flex",
+              display: 'flex',
             }}
           >
             <Avatar
               sx={{
-                width: "42px",
-                mr: "12px",
+                width: '42px',
+                mr: '12px',
               }}
               src={video.snippet.thumbnails.medium.url}
             />
             <Box>
               <Typography
                 sx={{
-                  whiteSpace: "normal",
-                  textOverflow: "ellipsis",
-                  overflow: "hidden",
+                  whiteSpace: 'normal',
+                  textOverflow: 'ellipsis',
+                  overflow: 'hidden',
                   // text just 2 rows
-                  display: "-webkit-box",
+                  display: '-webkit-box',
                   WebkitLineClamp: 2,
-                  WebkitBoxOrient: "vertical",
-                  maxHeight: "4,4rem",
-                  lineHeight: "1.4rem",
-                  fontSize: "1.05rem",
-                  fontWeight: "500",
+                  WebkitBoxOrient: 'vertical',
+                  maxHeight: '4,4rem',
+                  lineHeight: '1.4rem',
+                  fontSize: '1.05rem',
+                  fontWeight: '500',
                 }}
                 variant="h6"
                 component="div"
               >
                 {video.snippet.title}
               </Typography>
-              <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Typography
                   sx={{
-                    color: "#606060",
-                    fontSize: "0.875rem",
+                    color: '#606060',
+                    fontSize: '0.875rem',
                   }}
                 >
                   PedroTech
                 </Typography>
                 <CheckCircleIcon
                   sx={{
-                    width: "14px",
-                    height: "14px",
+                    width: '14px',
+                    height: '14px',
                   }}
                 />
               </Box>
               <Box
                 sx={{
-                  display: "flex",
-                  alignItems: "center",
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
               >
                 <Typography
                   sx={{
-                    color: "#606060",
-                    fontSize: "0.875rem",
-                    marginRight: "10px",
+                    color: '#606060',
+                    fontSize: '0.875rem',
+                    marginRight: '10px',
                   }}
                 >
-                  93N lượt xem
+                  {`${video.views} lượt xem`}
                 </Typography>
                 <Typography
                   sx={{
-                    color: "#606060",
-                    fontSize: "0.875rem",
+                    color: '#606060',
+                    fontSize: '0.875rem',
                   }}
                 >
                   20h giờ trước

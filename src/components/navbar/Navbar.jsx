@@ -1,6 +1,5 @@
 import { Avatar, Box, Button } from '@mui/material';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { logo } from '../../utils/constants';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -75,7 +74,7 @@ const Navbar = () => {
         >
           <DehazeIcon />
         </Box>
-        <Link to="/">
+        <a href="/">
           <Box>
             <img
               style={{
@@ -87,7 +86,7 @@ const Navbar = () => {
               alt="logo"
             />
           </Box>
-        </Link>
+        </a>
       </Box>
       <Box
         sx={{

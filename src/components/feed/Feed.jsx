@@ -3,14 +3,24 @@ import { useEffect, useRef, useState } from 'react';
 import SideBar from './SideBar';
 import Recommend from '../recommendation/Recommend';
 import Videos from './videos/Videos';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchVideos } from '../../reducer/video/videoActions';
-import { ChangeData } from '../../reducer/video/videoSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Feed = () => {
-  const [n, setA] = useState(1);
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.videos);
+  const navigate = useNavigate();
+  // const { data } = useSelector((state) => state.videos);
   const [pageNumber, setPageNumber] = useState(1);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  console.log('queryParams', queryParams.get('pagesize'));
+  const screenWidth = window.innerWidth;
+  let pageSize;
+  if (queryParams.get('pagesize')) {
+    pageSize = parseInt(queryParams.get('pagesize'));
+  } else {
+    pageSize = screenWidth > 960 ? 25 : 5;
+  }
   const loaderBottom = useRef();
   const loaderTop = useRef();
   // const [isIntersectingTop, setIsIntersectingTop] = useState(false);
@@ -65,11 +75,8 @@ const Feed = () => {
   // }, [isIntersectingBottom, isIntersectingTop]);
 
   useEffect(() => {
-    dispatch(fetchVideos(pageNumber, data.slice(-1).pop()?.nextPageToken));
-  }, [pageNumber, dispatch, data]);
-
-  useEffect(() => {
-    dispatch(ChangeData(pageNumber));
+    dispatch(fetchVideos(pageNumber, pageSize));
+    navigate(`?page=${pageNumber}&pagesize=${pageSize}`);
   }, [pageNumber, dispatch]);
 
   return (

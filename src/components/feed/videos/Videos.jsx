@@ -1,21 +1,21 @@
-import { Box, Grid, Skeleton } from "@mui/material";
-import React from "react";
-import VideoCard from "./VideoCard";
-import { useSelector } from "react-redux";
-const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
+import { Box, Grid, Skeleton } from '@mui/material';
+import React from 'react';
+import VideoCard from './VideoCard';
+import { useSelector } from 'react-redux';
+const Videos = ({ loaderBottom, loaderTop, pageNumber }) => {
   const { isLoading, data } = useSelector((state) => state.videos);
   const renderVideo = () => {
-    console.log("videos", videos);
-    console.log("dataLENGTH", data.length);
-    console.log("page", pageNumber);
+    console.log('videos1', data);
+    console.log('dataLENGTH', data.length);
+    console.log('page', pageNumber);
 
-    var NewList = data.map((ob, index) => {
+    var NewList = data.map((ob) => {
       return ob.items.map((video, index) => {
         if (video === undefined) {
           return (
             <Grid
               sx={{
-                paddingTop: "0px",
+                paddingTop: '0px',
               }}
               item
               xs={12}
@@ -28,13 +28,13 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
               <Skeleton
                 sx={{
                   display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "block",
-                    lg: "block",
-                    xl: "block",
+                    xs: 'none',
+                    sm: 'none',
+                    md: 'block',
+                    lg: 'block',
+                    xl: 'block',
                   },
-                  mb: "20px",
+                  mb: '20px',
                 }}
                 animation="wave"
                 variant="rect"
@@ -47,7 +47,7 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
           return (
             <Grid
               sx={{
-                paddingTop: "0px",
+                paddingTop: '0px',
               }}
               item
               xs={12}
@@ -58,7 +58,7 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
               key={video.id.concat(index)}
             >
               <VideoCard
-                key={video.id}
+                key={video._id}
                 video={video}
                 idVideo={video.snippet.resourceId.videoId}
               />
@@ -74,7 +74,7 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: '100%',
       }}
     >
       <Grid
@@ -85,19 +85,19 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
         }}
         sx={{
           maxWidth: {
-            sm: "100%",
-            xs: "100%",
-            md: "100%",
-            lg: "calc(100% - 80px)",
+            sm: '100%',
+            xs: '100%',
+            md: '100%',
+            lg: 'calc(100% - 80px)',
           },
           marginTop: {
-            xs: "10px",
+            xs: '10px',
           },
           marginX: {
-            lg: "auto",
+            lg: 'auto',
           },
           paddingLeft: {
-            md: "16px",
+            md: '16px',
           },
           // padding: {
           //   xs: "0px",
@@ -115,13 +115,13 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
             <Skeleton
               sx={{
                 display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "block",
-                  lg: "block",
-                  xl: "block",
+                  xs: 'none',
+                  sm: 'none',
+                  md: 'block',
+                  lg: 'block',
+                  xl: 'block',
                 },
-                ml: "20px",
+                ml: '20px',
               }}
               animation="wave"
               variant="rect"
@@ -131,13 +131,13 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
             <Skeleton
               sx={{
                 display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "block",
-                  lg: "block",
-                  xl: "block",
+                  xs: 'none',
+                  sm: 'none',
+                  md: 'block',
+                  lg: 'block',
+                  xl: 'block',
                 },
-                ml: "20px",
+                ml: '20px',
               }}
               animation="wave"
               variant="rect"
@@ -147,13 +147,13 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
             <Skeleton
               sx={{
                 display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "block",
-                  lg: "block",
-                  xl: "block",
+                  xs: 'none',
+                  sm: 'none',
+                  md: 'block',
+                  lg: 'block',
+                  xl: 'block',
                 },
-                ml: "20px",
+                ml: '20px',
               }}
               animation="wave"
               variant="rect"
@@ -164,11 +164,11 @@ const Videos = ({ videos, loaderBottom, loaderTop, pageNumber }) => {
             <Skeleton
               sx={{
                 display: {
-                  xs: "block",
-                  sm: "block",
-                  md: "none",
-                  lg: "none",
-                  xl: "none",
+                  xs: 'block',
+                  sm: 'block',
+                  md: 'none',
+                  lg: 'none',
+                  xl: 'none',
                 },
               }}
               animation="wave"

@@ -1,103 +1,111 @@
-import React from "react";
-import { Card, CardContent, CardMedia, Typography, Box } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import React from 'react';
+import { Card, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { Link } from 'react-router-dom';
 const CardDeTail = ({ item }) => {
   return (
-    <Card
-      sx={{
-        marginBottom: "10px",
-        border: "none",
-        boxShadow: "none",
-        cursor: "pointer",
-        width: "100%",
-        display: "flex",
+    <Link
+      to={`/${item.id}`}
+      state={{
+        idVideo: item.snippet.resourceId.videoId,
       }}
     >
-      <Box
+      <Card
         sx={{
-          display: "flex",
+          marginBottom: '10px',
+          border: 'none',
+          boxShadow: 'none',
+          cursor: 'pointer',
+          width: '100%',
+          display: 'flex',
         }}
       >
-        <CardMedia
-          component="img"
-          src={item?.snippet.thumbnails.medium.url}
+        <Box
           sx={{
-            borderRadius: "12px",
-            height: "104px",
-            width: {
-              xs: "140px",
-              lg: "180px",
-            },
-          }}
-        />
-        <CardContent
-          sx={{
-            paddingTop: "0",
+            display: 'flex',
           }}
         >
-          <Typography
-            variant="h5"
+          <CardMedia
+            component="img"
+            src={item?.snippet.thumbnails.medium.url}
             sx={{
-              wordBreak: "break-word",
-              fontFamily: "YouTube Sans, Roboto, sans-serif",
-              fontWeight: "550",
-              fontSize: "16px",
-              lineHeight: "1.2rem",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
-              paddingTop: "2px",
-              maxWidth: {
-                xs: "200px",
+              borderRadius: '12px',
+              height: '104px',
+              width: {
+                xs: '140px',
+                lg: '180px',
               },
             }}
-          >
-            {item?.snippet.title}
-          </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
-            <Typography
-              sx={{
-                color: "#606060",
-                fontSize: "0.8rem",
-              }}
-            >
-              PedroTech
-            </Typography>
-            <CheckCircleIcon
-              sx={{
-                width: "14px",
-                height: "14px",
-              }}
-            />
-          </Box>
-          <Box
+          />
+          <CardContent
             sx={{
-              display: "flex",
-              alignItems: "center",
+              paddingTop: '0',
             }}
           >
             <Typography
+              variant="h5"
               sx={{
-                color: "#606060",
-                fontSize: "0.875rem",
-                marginRight: "10px",
+                wordBreak: 'break-word',
+                fontFamily: 'YouTube Sans, Roboto, sans-serif',
+                fontWeight: '550',
+                fontSize: '16px',
+                lineHeight: '1.2rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                paddingTop: '2px',
+                maxWidth: {
+                  xs: '200px',
+                },
               }}
             >
-              93N lượt xem
+              {item?.snippet.title}
             </Typography>
-            <Typography
+            <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+              <Typography
+                sx={{
+                  color: '#606060',
+                  fontSize: '0.8rem',
+                }}
+              >
+                PedroTech
+              </Typography>
+              <CheckCircleIcon
+                sx={{
+                  width: '14px',
+                  height: '14px',
+                }}
+              />
+            </Box>
+            <Box
               sx={{
-                color: "#606060",
-                fontSize: "0.875rem",
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
-              20h giờ trước
-            </Typography>
-          </Box>
-        </CardContent>
-      </Box>
-    </Card>
+              <Typography
+                sx={{
+                  color: '#606060',
+                  fontSize: '0.875rem',
+                  marginRight: '10px',
+                }}
+              >
+                93N lượt xem
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#606060',
+                  fontSize: '0.875rem',
+                }}
+              >
+                20h giờ trước
+              </Typography>
+            </Box>
+          </CardContent>
+        </Box>
+      </Card>
+    </Link>
   );
 };
 
